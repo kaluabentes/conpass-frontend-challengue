@@ -1,0 +1,7 @@
+.link {
+  text-decoration-line: none;
+  display: inline-block;
+  padding: 15px;
+  color: #aaa;
+  font-size: 1.1875rem;
+}
