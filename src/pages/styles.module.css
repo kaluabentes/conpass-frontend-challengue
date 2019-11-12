@@ -1,0 +1,10 @@
+.hotspots {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.hotspotsHeader {
+  padding: 50px 50px 70px 50px;
+  display: flex;
+  justify-content: center;
+}
