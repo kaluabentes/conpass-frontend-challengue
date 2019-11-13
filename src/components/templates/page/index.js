@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 
 import Header from 'components/organisms/header'
 import Brand from 'components/atoms/brand'
@@ -9,6 +10,9 @@ import logo from 'images/logo.png'
 
 const Page = ({ children }) => (
   <>
+    <Helmet>
+      <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
+    </Helmet>
     <Header>
       <Brand src={logo} alt="Conpass" />
       <Nav>
