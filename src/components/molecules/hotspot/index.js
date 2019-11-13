@@ -8,12 +8,12 @@ import Tooltip from 'components/atoms/tooltip'
 
 import styles from './styles.module.css'
 
-const Hotspot = ({ title, content, isOpen, onToggle, onClose }) => (
+const Hotspot = ({ title, content, isOpen, isEditable, onEdit, onToggle, onClose }) => (
   <ClickOutside onClickOutside={onClose}>
     <div className={classnames(styles.hotspot, { [styles.isOpen]: isOpen })}>
       <HotspotMarker onClick={onToggle} />
       <div className={styles.tooltipContainer}>
-        <Tooltip title={title} content={content} />
+        <Tooltip isEditable={isEditable} onEdit={onEdit} title={title} content={content} />
       </div>
     </div>
   </ClickOutside>
