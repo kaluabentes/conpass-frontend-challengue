@@ -1,0 +1,44 @@
+.button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.outterCircle {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid black;
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+}
+
+.innerCircle {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 58, 4, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 58, 4, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 58, 4, 0);
+  }
+}
