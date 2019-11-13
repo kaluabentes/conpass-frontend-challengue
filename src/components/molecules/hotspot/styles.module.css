@@ -1,0 +1,23 @@
+.hotspot {
+  position: relative;
+  width: 30px;
+}
+
+.tooltipContainer {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translate(-50%, -10px);
+  min-width: 400px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+
+.isOpen 
+.tooltipContainer {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  visibility: visible;
+}
