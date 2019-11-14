@@ -6,12 +6,12 @@ import styles from './styles.module.css'
 const Tooltip = ({ isEditable, onEdit, title, content }) => (
   <div className={styles.tooltip}>
     {isEditable ? (
-      <input className={styles.titleField} value={title} onChange={onEdit} />
+      <input className={styles.titleField} name="title" value={title} onChange={onEdit} />
     ) : (
       <h3 className={styles.title}>{title}</h3>
     )}
     {isEditable ? (
-      <textarea className={styles.contentField} onChange={onEdit} value={content} />
+      <textarea className={styles.contentField} name="content" onChange={onEdit} value={content} />
     ) : (
       <p className={styles.content}>{content}</p>
     )}
