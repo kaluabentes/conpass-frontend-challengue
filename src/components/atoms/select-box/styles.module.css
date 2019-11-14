@@ -1,0 +1,6 @@
+.selectBox {
+  border: 2px solid red;
+  background: green;
+  opacity: 0.3;
+  position: absolute;
+}
