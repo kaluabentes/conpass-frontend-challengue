@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 
 import Page from 'components/templates/page'
 import Metadata from 'components/atoms/metadata'
@@ -26,7 +26,15 @@ class Index extends Component {
     this.setState(prevState => ({
       hotspots: [
         ...prevState.hotspots,
-        { isOpen: false, isEditable: true, title: '', content: '', posX: x - 15, posY: y - 15 },
+        {
+          id: prevState.hotspots.length + 1,
+          isOpen: true,
+          isEditable: true,
+          title: `Hotspot #${prevState.hotspots.length + 1}`,
+          content: '<content>',
+          posX: x - 15,
+          posY: y - 15,
+        },
       ],
     }))
   }
@@ -65,7 +73,7 @@ class Index extends Component {
     }, 500)
   }
 
-  handleCreateHotspot = () => {
+  handleHotspotCreate = () => {
     this.setState({
       isCreatingHotspot: true,
     })
@@ -73,9 +81,24 @@ class Index extends Component {
     document.addEventListener('mouseover', this.handleMouseHover)
   }
 
+  handleHotspotEdit = (id, event) => {
+    const input = event.target
+    this.setState(prevState => ({
+      hotspots: prevState.hotspots.map(hotspot => {
+        if (id === hotspot.id) {
+          return {
+            ...hotspot,
+            [input.name]: input.value,
+          }
+        }
+
+        return hotspot
+      }),
+    }))
+  }
+
   render() {
     const {
-      isOpen,
       isCreatingHotspot,
       hotspots,
       currentElementHeight,
@@ -93,24 +116,26 @@ class Index extends Component {
         <Container>
           <div className={styles.hotspots}>
             <div className={styles.hotspotsHeader}>
-              <Button onClick={this.handleCreateHotspot}>Create Hotspot</Button>
+              <Button onClick={this.handleHotspotCreate}>Create Hotspot</Button>
               {isCreatingHotspot && (
                 <div className={styles.creatingMessage}>Selecione um elemento</div>
               )}
             </div>
             <HotspotList title="List of hotspots">
-              <HotspotItem onDelete={() => {}}>Hotspot #1</HotspotItem>
-              <HotspotItem onDelete={() => {}}>Hotspot #2</HotspotItem>
-              <HotspotItem onDelete={() => {}}>Hotspot #3</HotspotItem>
+              {hotspots.map(hotspot => (
+                <HotspotItem key={hotspot.id} onDelete={() => this.handleHotspotDelete(hotspot.id)}>
+                  {hotspot.title}
+                </HotspotItem>
+              ))}
             </HotspotList>
-            {hotspots.map((hotspot, index) => (
+            {hotspots.map(hotspot => (
               <Hotspot
-                key={index}
+                key={hotspot.id}
                 isOpen={hotspot.isOpen}
                 isEditable={hotspot.isEditable}
-                onEdit={() => {}}
-                title="How to install"
-                content="It takes only 5 minutes to install this script into your website"
+                onEdit={event => this.handleHotspotEdit(hotspot.id, event)}
+                title={hotspot.title}
+                content={hotspot.content}
                 onToggle={this.handleToggle}
                 onClose={this.handleClose}
                 posX={hotspot.posX}
