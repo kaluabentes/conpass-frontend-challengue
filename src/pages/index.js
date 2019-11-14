@@ -131,6 +131,12 @@ class Index extends Component {
     }))
   }
 
+  handleHotspotDelete = id => {
+    this.setState(prevState => ({
+      hotspots: prevState.hotspots.filter(hotspot => hotspot.id !== id),
+    }))
+  }
+
   render() {
     const {
       isCreatingHotspot,
