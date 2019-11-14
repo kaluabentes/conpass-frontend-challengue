@@ -8,9 +8,12 @@ import Tooltip from 'components/atoms/tooltip'
 
 import styles from './styles.module.css'
 
-const Hotspot = ({ title, content, isOpen, isEditable, onEdit, onToggle, onClose }) => (
+const Hotspot = ({ posX, posY, title, content, isOpen, isEditable, onEdit, onToggle, onClose }) => (
   <ClickOutside onClickOutside={onClose}>
-    <div className={classnames(styles.hotspot, { [styles.isOpen]: isOpen })}>
+    <div
+      className={classnames(styles.hotspot, { [styles.isOpen]: isOpen })}
+      style={{ top: `${posY}px`, left: `${posX}px` }}
+    >
       <HotspotMarker onClick={onToggle} />
       <div className={styles.tooltipContainer}>
         <Tooltip isEditable={isEditable} onEdit={onEdit} title={title} content={content} />
@@ -22,7 +25,7 @@ const Hotspot = ({ title, content, isOpen, isEditable, onEdit, onToggle, onClose
 Hotspot.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  isOpen: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 }
