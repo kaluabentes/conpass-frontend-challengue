@@ -6,5 +6,11 @@
 .hotspotsHeader {
   padding: 50px 50px 70px 50px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.creatingMessage {
+  padding: 20px;
 }
