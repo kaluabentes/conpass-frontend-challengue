@@ -26,7 +26,7 @@ class Index extends Component {
     this.setState(prevState => ({
       hotspots: [
         ...prevState.hotspots,
-        { isOpen: false, title: '', content: '', postX: x, postY: y },
+        { isOpen: false, isEditable: true, title: '', content: '', posX: x - 15, posY: y - 15 },
       ],
     }))
   }
@@ -45,6 +45,11 @@ class Index extends Component {
 
   handleDocumentClick = event => {
     this.createHotspot(event.x, event.y)
+    this.setState({
+      isCreatingHotspot: false,
+    })
+    document.removeEventListener('click', this.handleDocumentClick)
+    document.removeEventListener('mouseover', this.handleMouseHover)
   }
 
   handleMouseHover = event => {
@@ -98,25 +103,28 @@ class Index extends Component {
               <HotspotItem onDelete={() => {}}>Hotspot #2</HotspotItem>
               <HotspotItem onDelete={() => {}}>Hotspot #3</HotspotItem>
             </HotspotList>
-            {hotspots.map(hotspot => (
+            {hotspots.map((hotspot, index) => (
               <Hotspot
-                isOpen={isOpen}
-                isEditable
+                key={index}
+                isOpen={hotspot.isOpen}
+                isEditable={hotspot.isEditable}
                 onEdit={() => {}}
                 title="How to install"
                 content="It takes only 5 minutes to install this script into your website"
                 onToggle={this.handleToggle}
                 onClose={this.handleClose}
-                posX={50}
-                posY={50}
+                posX={hotspot.posX}
+                posY={hotspot.posY}
               />
             ))}
-            <SelectBox
-              width={currentElementWidth}
-              height={currentElementHeight}
-              posX={currentElementX}
-              posY={currentElementY}
-            />
+            {isCreatingHotspot && (
+              <SelectBox
+                width={currentElementWidth}
+                height={currentElementHeight}
+                posX={currentElementX}
+                posY={currentElementY}
+              />
+            )}
           </div>
         </Container>
       </Page>
