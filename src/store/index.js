@@ -1,8 +1,8 @@
 import { createStore } from 'redux'
 import throttle from 'lodash/throttle'
 
-import rootReducer from './modules/rootReducer'
-import { loadState, saveState } from 'utils/localStorage'
+import rootReducer from './modules/root-reducer'
+import { loadState, saveState } from 'utils/local-storage'
 
 const persistedState = loadState()
 
