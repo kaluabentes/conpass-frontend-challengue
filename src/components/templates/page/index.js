@@ -16,10 +16,10 @@ const Page = ({ children }) => (
     <Header>
       <Brand src={logo} alt="Conpass" />
       <Nav>
-        <NavItem>Link fake 1</NavItem>
-        <NavItem>Link fake 2</NavItem>
-        <NavItem>Link fake 3</NavItem>
-        <NavItem>Link fake 4</NavItem>
+        <NavItem path="/">Link fake 1</NavItem>
+        <NavItem path="/">Link fake 2</NavItem>
+        <NavItem path="/">Link fake 3</NavItem>
+        <NavItem path="/">Link fake 4</NavItem>
       </Nav>
     </Header>
     <main>{children}</main>
