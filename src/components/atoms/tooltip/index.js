@@ -11,9 +11,7 @@ const Tooltip = ({ isEditable, onEdit, title, content }) => (
       <h3 className={styles.title}>{title}</h3>
     )}
     {isEditable ? (
-      <textarea className={styles.contentField} onChange={onEdit}>
-        {content}
-      </textarea>
+      <textarea className={styles.contentField} onChange={onEdit} value={content} />
     ) : (
       <p className={styles.content}>{content}</p>
     )}
