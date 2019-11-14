@@ -55,6 +55,10 @@ class Index extends Component {
     this.createHotspot(event.x, event.y)
     this.setState({
       isCreatingHotspot: false,
+      currentElementWidth: 0,
+      currentElementHeight: 0,
+      currentElementX: 0,
+      currentElementY: 0,
     })
     document.removeEventListener('click', this.handleDocumentClick)
     document.removeEventListener('mouseover', this.handleMouseHover)
@@ -89,6 +93,36 @@ class Index extends Component {
           return {
             ...hotspot,
             [input.name]: input.value,
+          }
+        }
+
+        return hotspot
+      }),
+    }))
+  }
+
+  handleHotspotToggle = id => {
+    this.setState(prevState => ({
+      hotspots: prevState.hotspots.map(hotspot => {
+        if (id === hotspot.id) {
+          return {
+            ...hotspot,
+            isOpen: !hotspot.isOpen,
+          }
+        }
+
+        return hotspot
+      }),
+    }))
+  }
+
+  handleHotspotClose = id => {
+    this.setState(prevState => ({
+      hotspots: prevState.hotspots.map(hotspot => {
+        if (id === hotspot.id) {
+          return {
+            ...hotspot,
+            isOpen: false,
           }
         }
 
@@ -136,8 +170,8 @@ class Index extends Component {
                 onEdit={event => this.handleHotspotEdit(hotspot.id, event)}
                 title={hotspot.title}
                 content={hotspot.content}
-                onToggle={this.handleToggle}
-                onClose={this.handleClose}
+                onToggle={() => this.handleHotspotToggle(hotspot.id)}
+                onClose={() => this.handleHotspotClose(hotspot.id)}
                 posX={hotspot.posX}
                 posY={hotspot.posY}
               />
