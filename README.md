@@ -1,3 +1,15 @@
+<p align="center">
+  <a href="https://directus.io" target="_blank" rel="noopener noreferrer">
+    <img src="https://github.com/kaluabentes/conpass-frontend-challengue/blob/master/src/images/logo.png" width="400" alt="Directus Logo"/>
+  </a>
+</p>
+
+<p>&nbsp;</p>
+
+<h1 align="center">
+  Conpass Hotspots<br>Frontend Challengue App
+</h1>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -11,7 +23,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
